@@ -2,24 +2,21 @@ import java.util.Objects;
 
 public class TennisGame1 implements TennisGame {
 
-    private int m_score1 = 0;
-    private int m_score2 = 0;
-
-    public TennisGame1() {
-    }
-
+    private int scorePlayerOne = 0;
+    private int scorePlayerTwo = 0;
+    
     public void wonPoint(String playerName) {
         if (Objects.equals(playerName, "player1"))
-            m_score1 += 1;
+            scorePlayerOne += 1;
         else
-            m_score2 += 1;
+            scorePlayerTwo += 1;
     }
 
     public String getScore() {
         String score = "";
         int tempScore = 0;
-        if (m_score1 == m_score2) {
-            switch (m_score1) {
+        if (scorePlayerOne == scorePlayerTwo) {
+            switch (scorePlayerOne) {
                 case 0:
                     score = "Love-All";
                     break;
@@ -34,18 +31,18 @@ public class TennisGame1 implements TennisGame {
                     break;
 
             }
-        } else if (m_score1 >= 4 || m_score2 >= 4) {
-            int minusResult = m_score1 - m_score2;
+        } else if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
+            int minusResult = scorePlayerOne - scorePlayerTwo;
             if (minusResult == 1) score = "Advantage player1";
             else if (minusResult == -1) score = "Advantage player2";
             else if (minusResult >= 2) score = "Win for player1";
             else score = "Win for player2";
         } else {
             for (int i = 1; i < 3; i++) {
-                if (i == 1) tempScore = m_score1;
+                if (i == 1) tempScore = scorePlayerOne;
                 else {
                     score += "-";
-                    tempScore = m_score2;
+                    tempScore = scorePlayerTwo;
                 }
                 switch (tempScore) {
                     case 0:
