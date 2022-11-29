@@ -5,7 +5,7 @@ public class TennisGame1 implements TennisGame {
     public static final String ALL = "All";
     public static final String DEUCE = "Deuce";
     public static final String SEPARATOR = "-";
-    public static final String ADVANTAGE = "Advantage";
+    public static final String ADVANTAGE_FOR = "Advantage ";
     public static final String WIN_FOR = "Win for ";
     public static final String PLAYER_1 = "player1";
     public static final String PLAYER_2 = "player2";
@@ -26,7 +26,7 @@ public class TennisGame1 implements TennisGame {
         if (thereIsWinner()) {
             return getWinningDescription();
         }
-        if (atLeastThreePointsHaveBeenScoredByEachSide()) {
+        if (hasOnePlayerAdvantage()) {
             return getAdvanceDescription();
         }
 
@@ -45,8 +45,12 @@ public class TennisGame1 implements TennisGame {
         return Math.abs(scorePlayerTwo - scorePlayerOne) >= 2;
     }
 
+    private boolean hasOnePlayerAdvantage() {
+        return atLeastThreePointsHaveBeenScoredByEachSide();
+    }
+
     private String getAdvanceDescription() {
-        return ADVANTAGE + " " + getLeadPlayer();
+        return ADVANTAGE_FOR + getLeadPlayer();
     }
 
     private String getLeadPlayer() {
