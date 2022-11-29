@@ -5,20 +5,6 @@ public class TennisGame1 implements TennisGame {
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
 
-    private static String getMidGameScore(int tempScore) {
-        switch (tempScore) {
-            case 0:
-                return "Love";
-            case 1:
-                return "Fifteen";
-            case 2:
-                return "Thirty";
-            case 3:
-                return "Forty";
-        }
-        return "";
-    }
-
     public void wonPoint(String playerName) {
         if (Objects.equals(playerName, "player1"))
             scorePlayerOne += 1;
@@ -43,7 +29,17 @@ public class TennisGame1 implements TennisGame {
             else if (minusResult >= 2) return "Win for " + player1;
             return "Win for " + player2;
         } else {
-            return getMidGameScore(scorePlayerOne) + "-" + getMidGameScore(scorePlayerTwo);
+            return getScoreDescription(scorePlayerOne) + "-" + getScoreDescription(scorePlayerTwo);
         }
+    }
+
+    private String getScoreDescription(int tempScore) {
+        return switch (tempScore) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            case 3 -> "Forty";
+            default -> String.valueOf(tempScore);
+        };
     }
 }
