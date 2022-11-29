@@ -19,9 +19,10 @@ public class TennisGame1 implements TennisGame {
         if (isDeuce()) {
             return DEUCE;
         }
-        if (scorePlayerOne == scorePlayerTwo) {
+        if (areTied()) {
             return getScoreDescription(scorePlayerOne) + SEPARATOR + ALL;
-        } else if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
+        }
+        if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
             int minusResult = scorePlayerOne - scorePlayerTwo;
             String player2 = "player2";
             String player1 = "player1";
@@ -34,8 +35,12 @@ public class TennisGame1 implements TennisGame {
         }
     }
 
+    private boolean areTied() {
+        return scorePlayerOne == scorePlayerTwo;
+    }
+
     private boolean isDeuce() {
-        return scorePlayerOne == scorePlayerTwo && scorePlayerOne >= 3;
+        return areTied() && scorePlayerOne >= 3;
     }
 
     private String getScoreDescription(int tempScore) {
