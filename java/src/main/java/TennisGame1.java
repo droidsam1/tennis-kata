@@ -19,6 +19,17 @@ public class TennisGame1 implements TennisGame {
         if (areTied()) {
             return getTiedScoreDescription();
         }
+        if (scorePlayerOne >= 4) {
+            String player1 = "player1";
+            if (scorePlayerOne - scorePlayerTwo >= 2) return "Win for " + player1;
+        }
+
+        if (scorePlayerTwo >= 4) {
+            String player2 = "player2";
+            if (scorePlayerTwo - scorePlayerOne >= 2) return "Win for " + player2;
+        }
+
+
         if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
             int minusResult = scorePlayerOne - scorePlayerTwo;
             String player2 = "player2";
@@ -28,6 +39,7 @@ public class TennisGame1 implements TennisGame {
             if (minusResult >= 2) return "Win for " + player1;
             return "Win for " + player2;
         }
+
         return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
     }
 
