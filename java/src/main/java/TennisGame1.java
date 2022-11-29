@@ -40,15 +40,9 @@ public class TennisGame1 implements TennisGame {
             return "Win for " + player2;
         } else {
             String score = "";
-            for (int i = 1; i < 3; i++) {
-                if (i == 1) {
-                    score = getMidGameScore(score, scorePlayerOne);
-                } else {
-                    score += "-";
-                    score = getMidGameScore(score, scorePlayerTwo);
-                }
-
-            }
+            score = getMidGameScore(score, scorePlayerOne);
+            score += "-";
+            score = getMidGameScore(score, scorePlayerTwo);
             return score;
         }
     }
