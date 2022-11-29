@@ -42,12 +42,15 @@ public class TennisGame1 implements TennisGame {
             String score = "";
             int tempScore = 0;
             for (int i = 1; i < 3; i++) {
-                if (i == 1) tempScore = scorePlayerOne;
-                else {
+                if (i == 1) {
+                    tempScore = scorePlayerOne;
+                    score = getMidGameScore(score, tempScore);
+                } else {
                     score += "-";
                     tempScore = scorePlayerTwo;
+                    score = getMidGameScore(score, tempScore);
                 }
-                score = getMidGameScore(score, tempScore);
+
             }
             return score;
         }
