@@ -39,10 +39,9 @@ public class TennisGame1 implements TennisGame {
             else if (minusResult >= 2) return "Win for " + player1;
             return "Win for " + player2;
         } else {
-            String score = "";
-            score = getMidGameScore(score, scorePlayerOne);
+            String score = getMidGameScore("", scorePlayerOne);
             score += "-";
-            score = getMidGameScore(score, scorePlayerTwo);
+            score += getMidGameScore("", scorePlayerTwo);
             return score;
         }
     }
