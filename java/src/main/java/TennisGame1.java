@@ -16,6 +16,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
+        if (isDeuce()) {
+            return DEUCE;
+        }
+
         if (scorePlayerOne == scorePlayerTwo) {
             return switch (scorePlayerOne) {
                 case 0 -> "Love" + SEPARATOR + ALL;
@@ -34,6 +38,10 @@ public class TennisGame1 implements TennisGame {
         } else {
             return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
         }
+    }
+
+    private boolean isDeuce() {
+        return scorePlayerOne == scorePlayerTwo && scorePlayerOne >= 3;
     }
 
     private String getScoreDescription(int tempScore) {
