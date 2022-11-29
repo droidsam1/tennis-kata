@@ -16,11 +16,8 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        if (isDeuce()) {
-            return DEUCE;
-        }
         if (areTied()) {
-            return getScoreDescription(scorePlayerOne) + SEPARATOR + ALL;
+            return getTiedScoreDescription();
         }
         if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
             int minusResult = scorePlayerOne - scorePlayerTwo;
@@ -33,6 +30,13 @@ public class TennisGame1 implements TennisGame {
         } else {
             return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
         }
+    }
+
+    private String getTiedScoreDescription() {
+        if (isDeuce()) {
+            return DEUCE;
+        }
+        return getScoreDescription(scorePlayerOne) + SEPARATOR + ALL;
     }
 
     private boolean areTied() {
