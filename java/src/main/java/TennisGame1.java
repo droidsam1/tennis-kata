@@ -5,6 +5,7 @@ public class TennisGame1 implements TennisGame {
     public static final String ALL = "All";
     public static final String DEUCE = "Deuce";
     public static final String SEPARATOR = "-";
+    public static final String ADVANTAGE = "Advantage";
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
 
@@ -30,7 +31,7 @@ public class TennisGame1 implements TennisGame {
         }
 
 
-        if (scorePlayerOne >= 3 && scorePlayerTwo >= 3) {
+        if (atLeastThreePointsHaveBeenScoredByEachSide()) {
             int minusResult = scorePlayerOne - scorePlayerTwo;
             String player2 = "player2";
             String player1 = "player1";
@@ -39,6 +40,10 @@ public class TennisGame1 implements TennisGame {
         }
 
         return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
+    }
+
+    private boolean atLeastThreePointsHaveBeenScoredByEachSide() {
+        return scorePlayerOne >= 3 && scorePlayerTwo >= 3;
     }
 
     private String getTiedScoreDescription() {
