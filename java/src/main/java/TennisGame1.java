@@ -7,11 +7,13 @@ public class TennisGame1 implements TennisGame {
     public static final String SEPARATOR = "-";
     public static final String ADVANTAGE = "Advantage";
     public static final String WIN_FOR = "Win for ";
+    public static final String PLAYER_1 = "player1";
+    public static final String PLAYER_2 = "player2";
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
 
     public void wonPoint(String playerName) {
-        if (Objects.equals(playerName, "player1"))
+        if (Objects.equals(playerName, PLAYER_1))
             scorePlayerOne += 1;
         else
             scorePlayerTwo += 1;
@@ -22,12 +24,12 @@ public class TennisGame1 implements TennisGame {
             return getTiedScoreDescription();
         }
         if (scorePlayerOne >= 4) {
-            if (scorePlayerOne > scorePlayerTwo && isScoreDifferenceBiggerThanTwoPoints())
+            if (getLeadPlayer().equals(PLAYER_1) && isScoreDifferenceBiggerThanTwoPoints())
                 return WIN_FOR + getLeadPlayer();
         }
 
         if (scorePlayerTwo >= 4) {
-            if (scorePlayerTwo > scorePlayerOne && isScoreDifferenceBiggerThanTwoPoints())
+            if (getLeadPlayer().equals(PLAYER_2) && isScoreDifferenceBiggerThanTwoPoints())
                 return WIN_FOR + getLeadPlayer();
         }
 
@@ -49,9 +51,9 @@ public class TennisGame1 implements TennisGame {
 
     private String getLeadPlayer() {
         if (scorePlayerOne > scorePlayerTwo) {
-            return "player1";
+            return PLAYER_1;
         }
-        return "player2";
+        return PLAYER_2;
     }
 
     private boolean atLeastThreePointsHaveBeenScoredByEachSide() {
