@@ -23,22 +23,22 @@ public class TennisGame1 implements TennisGame {
         if (areTied()) {
             return getTiedScoreDescription();
         }
-        if (scorePlayerOne >= 4) {
-            if (getLeadPlayer().equals(PLAYER_1) && isScoreDifferenceBiggerThanTwoPoints())
-                return WIN_FOR + getLeadPlayer();
+        if (thereIsWinner()) {
+            return getWinningDescription();
         }
-
-        if (scorePlayerTwo >= 4) {
-            if (getLeadPlayer().equals(PLAYER_2) && isScoreDifferenceBiggerThanTwoPoints())
-                return WIN_FOR + getLeadPlayer();
-        }
-
-
         if (atLeastThreePointsHaveBeenScoredByEachSide()) {
             return getAdvanceDescription();
         }
 
         return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
+    }
+
+    private boolean thereIsWinner() {
+        return ((scorePlayerOne >= 4 || scorePlayerTwo >= 4) && isScoreDifferenceBiggerThanTwoPoints());
+    }
+
+    private String getWinningDescription() {
+        return WIN_FOR + getLeadPlayer();
     }
 
     private boolean isScoreDifferenceBiggerThanTwoPoints() {
