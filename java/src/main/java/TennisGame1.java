@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class TennisGame1 implements TennisGame {
 
     public static final String ALL = "All";
@@ -13,14 +11,14 @@ public class TennisGame1 implements TennisGame {
     private int scorePlayerTwo = 0;
 
     public void wonPoint(String playerName) {
-        if (Objects.equals(playerName, PLAYER_1))
+        if (PLAYER_1.equals(playerName))
             scorePlayerOne += 1;
         else
             scorePlayerTwo += 1;
     }
 
     public String getScore() {
-        if (areTied()) {
+        if (arePlayersTied()) {
             return getTiedScoreDescription();
         }
         if (thereIsWinner()) {
@@ -72,10 +70,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     private boolean isDeuce() {
-        return areTied() && atLeastThreePointsHaveBeenScoredByEachSide();
+        return arePlayersTied() && atLeastThreePointsHaveBeenScoredByEachSide();
     }
 
-    private boolean areTied() {
+    private boolean arePlayersTied() {
         return scorePlayerOne == scorePlayerTwo;
     }
 
