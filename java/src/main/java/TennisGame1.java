@@ -6,6 +6,7 @@ public class TennisGame1 implements TennisGame {
     public static final String DEUCE = "Deuce";
     public static final String SEPARATOR = "-";
     public static final String ADVANTAGE = "Advantage";
+    public static final String WIN_FOR = "Win for ";
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
 
@@ -21,11 +22,13 @@ public class TennisGame1 implements TennisGame {
             return getTiedScoreDescription();
         }
         if (scorePlayerOne >= 4) {
-            if (scorePlayerOne - scorePlayerTwo >= 2) return "Win for " + getLeadPlayer();
+            if (scorePlayerOne > scorePlayerTwo && Math.abs(scorePlayerTwo - scorePlayerOne) >= 2)
+                return WIN_FOR + getLeadPlayer();
         }
 
         if (scorePlayerTwo >= 4) {
-            if (scorePlayerTwo - scorePlayerOne >= 2) return "Win for " + getLeadPlayer();
+            if (scorePlayerTwo > scorePlayerOne && Math.abs(scorePlayerTwo - scorePlayerOne) >= 2)
+                return WIN_FOR + getLeadPlayer();
         }
 
 
