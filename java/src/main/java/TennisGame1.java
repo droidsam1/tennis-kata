@@ -22,12 +22,12 @@ public class TennisGame1 implements TennisGame {
             return getTiedScoreDescription();
         }
         if (scorePlayerOne >= 4) {
-            if (scorePlayerOne > scorePlayerTwo && Math.abs(scorePlayerTwo - scorePlayerOne) >= 2)
+            if (scorePlayerOne > scorePlayerTwo && isScoreDifferenceBiggerThanTwoPoints())
                 return WIN_FOR + getLeadPlayer();
         }
 
         if (scorePlayerTwo >= 4) {
-            if (scorePlayerTwo > scorePlayerOne && Math.abs(scorePlayerTwo - scorePlayerOne) >= 2)
+            if (scorePlayerTwo > scorePlayerOne && isScoreDifferenceBiggerThanTwoPoints())
                 return WIN_FOR + getLeadPlayer();
         }
 
@@ -37,6 +37,10 @@ public class TennisGame1 implements TennisGame {
         }
 
         return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
+    }
+
+    private boolean isScoreDifferenceBiggerThanTwoPoints() {
+        return Math.abs(scorePlayerTwo - scorePlayerOne) >= 2;
     }
 
     private String getAdvanceDescription() {
