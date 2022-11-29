@@ -7,10 +7,14 @@ public class TennisGame1 implements TennisGame {
 
     private static String getMidGameScore(String score, int tempScore) {
         switch (tempScore) {
-            case 0 -> score += "Love";
-            case 1 -> score += "Fifteen";
-            case 2 -> score += "Thirty";
-            case 3 -> score += "Forty";
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            case 3:
+                return "Forty";
         }
         return score;
     }
