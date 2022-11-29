@@ -2,6 +2,9 @@ import java.util.Objects;
 
 public class TennisGame1 implements TennisGame {
 
+    public static final String ALL = "All";
+    public static final String DEUCE = "Deuce";
+    public static final String SEPARATOR = "-";
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
 
@@ -15,10 +18,10 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         if (scorePlayerOne == scorePlayerTwo) {
             return switch (scorePlayerOne) {
-                case 0 -> "Love-All";
-                case 1 -> "Fifteen-All";
-                case 2 -> "Thirty-All";
-                default -> "Deuce";
+                case 0 -> "Love" + SEPARATOR + ALL;
+                case 1 -> "Fifteen" + SEPARATOR + ALL;
+                case 2 -> "Thirty" + SEPARATOR + ALL;
+                default -> DEUCE;
             };
         } else if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
             int minusResult = scorePlayerOne - scorePlayerTwo;
@@ -29,7 +32,7 @@ public class TennisGame1 implements TennisGame {
             else if (minusResult >= 2) return "Win for " + player1;
             return "Win for " + player2;
         } else {
-            return getScoreDescription(scorePlayerOne) + "-" + getScoreDescription(scorePlayerTwo);
+            return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
         }
     }
 
