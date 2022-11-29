@@ -67,12 +67,12 @@ public class TennisGame1 implements TennisGame {
         return getScoreDescription(scorePlayerOne) + SEPARATOR + ALL;
     }
 
-    private boolean areTied() {
-        return scorePlayerOne == scorePlayerTwo;
+    private boolean isDeuce() {
+        return areTied() && atLeastThreePointsHaveBeenScoredByEachSide();
     }
 
-    private boolean isDeuce() {
-        return areTied() && scorePlayerOne >= 3;
+    private boolean areTied() {
+        return scorePlayerOne == scorePlayerTwo;
     }
 
     private String getScoreDescription(int tempScore) {
