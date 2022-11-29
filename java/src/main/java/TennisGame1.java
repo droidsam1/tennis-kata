@@ -4,7 +4,7 @@ public class TennisGame1 implements TennisGame {
 
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
-    
+
     public void wonPoint(String playerName) {
         if (Objects.equals(playerName, "player1"))
             scorePlayerOne += 1;
@@ -16,21 +16,12 @@ public class TennisGame1 implements TennisGame {
         String score = "";
         int tempScore = 0;
         if (scorePlayerOne == scorePlayerTwo) {
-            switch (scorePlayerOne) {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-
-            }
+            score = switch (scorePlayerOne) {
+                case 0 -> "Love-All";
+                case 1 -> "Fifteen-All";
+                case 2 -> "Thirty-All";
+                default -> "Deuce";
+            };
         } else if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
             int minusResult = scorePlayerOne - scorePlayerTwo;
             if (minusResult == 1) score = "Advantage player1";
@@ -45,18 +36,10 @@ public class TennisGame1 implements TennisGame {
                     tempScore = scorePlayerTwo;
                 }
                 switch (tempScore) {
-                    case 0:
-                        score += "Love";
-                        break;
-                    case 1:
-                        score += "Fifteen";
-                        break;
-                    case 2:
-                        score += "Thirty";
-                        break;
-                    case 3:
-                        score += "Forty";
-                        break;
+                    case 0 -> score += "Love";
+                    case 1 -> score += "Fifteen";
+                    case 2 -> score += "Thirty";
+                    case 3 -> score += "Forty";
                 }
             }
         }
