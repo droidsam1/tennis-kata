@@ -32,14 +32,21 @@ public class TennisGame1 implements TennisGame {
 
 
         if (atLeastThreePointsHaveBeenScoredByEachSide()) {
-            int minusResult = scorePlayerOne - scorePlayerTwo;
-            String player2 = "player2";
-            String player1 = "player1";
-            if (minusResult == 1) return "Advantage " + player1;
-            if (minusResult == -1) return "Advantage " + player2;
+            return getAdvanceDescription();
         }
 
         return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
+    }
+
+    private String getAdvanceDescription() {
+        return ADVANTAGE + " " + getLeadPlayer();
+    }
+
+    private String getLeadPlayer() {
+        if (scorePlayerOne > scorePlayerTwo) {
+            return "player1";
+        }
+        return "player2";
     }
 
     private boolean atLeastThreePointsHaveBeenScoredByEachSide() {
