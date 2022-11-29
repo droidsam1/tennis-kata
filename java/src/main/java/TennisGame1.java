@@ -19,14 +19,8 @@ public class TennisGame1 implements TennisGame {
         if (isDeuce()) {
             return DEUCE;
         }
-
         if (scorePlayerOne == scorePlayerTwo) {
-            return switch (scorePlayerOne) {
-                case 0 -> "Love" + SEPARATOR + ALL;
-                case 1 -> "Fifteen" + SEPARATOR + ALL;
-                case 2 -> "Thirty" + SEPARATOR + ALL;
-                default -> DEUCE;
-            };
+            return getScoreDescription(scorePlayerOne) + SEPARATOR + ALL;
         } else if (scorePlayerOne >= 4 || scorePlayerTwo >= 4) {
             int minusResult = scorePlayerOne - scorePlayerTwo;
             String player2 = "player2";
