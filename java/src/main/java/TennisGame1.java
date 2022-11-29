@@ -5,7 +5,7 @@ public class TennisGame1 implements TennisGame {
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
 
-    private static String getMidGameScore(String score, int tempScore) {
+    private static String getMidGameScore(int tempScore) {
         switch (tempScore) {
             case 0:
                 return "Love";
@@ -16,7 +16,7 @@ public class TennisGame1 implements TennisGame {
             case 3:
                 return "Forty";
         }
-        return score;
+        return "";
     }
 
     public void wonPoint(String playerName) {
@@ -43,10 +43,7 @@ public class TennisGame1 implements TennisGame {
             else if (minusResult >= 2) return "Win for " + player1;
             return "Win for " + player2;
         } else {
-            String score = getMidGameScore("", scorePlayerOne);
-            score += "-";
-            score += getMidGameScore("", scorePlayerTwo);
-            return score;
+            return getMidGameScore(scorePlayerOne) + "-" + getMidGameScore(scorePlayerTwo);
         }
     }
 }
