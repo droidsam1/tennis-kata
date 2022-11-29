@@ -21,13 +21,11 @@ public class TennisGame1 implements TennisGame {
             return getTiedScoreDescription();
         }
         if (scorePlayerOne >= 4) {
-            String player1 = "player1";
-            if (scorePlayerOne - scorePlayerTwo >= 2) return "Win for " + player1;
+            if (scorePlayerOne - scorePlayerTwo >= 2) return "Win for " + getLeadPlayer();
         }
 
         if (scorePlayerTwo >= 4) {
-            String player2 = "player2";
-            if (scorePlayerTwo - scorePlayerOne >= 2) return "Win for " + player2;
+            if (scorePlayerTwo - scorePlayerOne >= 2) return "Win for " + getLeadPlayer();
         }
 
 
