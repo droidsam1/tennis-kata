@@ -1,76 +1,89 @@
-
 public class TennisGame1 implements TennisGame {
-    
-    private int m_score1 = 0;
-    private int m_score2 = 0;
-    private String player1Name;
-    private String player2Name;
 
-    public TennisGame1(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
-    }
+    public static final String ALL = "All";
+    public static final String DEUCE = "Deuce";
+    public static final String SEPARATOR = "-";
+    public static final String ADVANTAGE_FOR = "Advantage ";
+    public static final String WIN_FOR = "Win for ";
+    public static final String PLAYER_1 = "player1";
+    public static final String PLAYER_2 = "player2";
+    private int scorePlayerOne = 0;
+    private int scorePlayerTwo = 0;
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
-            m_score1 += 1;
+        if (PLAYER_1.equals(playerName))
+            scorePlayerOne += 1;
         else
-            m_score2 += 1;
+            scorePlayerTwo += 1;
     }
 
     public String getScore() {
-        String score = "";
-        int tempScore=0;
-        if (m_score1==m_score2)
-        {
-            switch (m_score1)
-            {
-                case 0:
-                        score = "Love-All";
-                    break;
-                case 1:
-                        score = "Fifteen-All";
-                    break;
-                case 2:
-                        score = "Thirty-All";
-                    break;
-                default:
-                        score = "Deuce";
-                    break;
-                
-            }
+        if (arePlayersTied()) {
+            return getTiedScoreDescription();
         }
-        else if (m_score1>=4 || m_score2>=4)
-        {
-            int minusResult = m_score1-m_score2;
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
-            else score ="Win for player2";
+        if (thereIsWinner()) {
+            return getWinningDescription();
         }
-        else
-        {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
-            }
+        if (hasOnePlayerAdvantage()) {
+            return getAdvanceDescription();
         }
-        return score;
+
+        return getScoreDescription(scorePlayerOne) + SEPARATOR + getScoreDescription(scorePlayerTwo);
+    }
+
+    private boolean thereIsWinner() {
+        return ((scorePlayerOne >= 4 || scorePlayerTwo >= 4) && isScoreDifferenceBiggerThanTwoPoints());
+    }
+
+    private String getWinningDescription() {
+        return WIN_FOR + getLeadPlayer();
+    }
+
+    private boolean isScoreDifferenceBiggerThanTwoPoints() {
+        return Math.abs(scorePlayerTwo - scorePlayerOne) >= 2;
+    }
+
+    private boolean hasOnePlayerAdvantage() {
+        return atLeastThreePointsHaveBeenScoredByEachSide();
+    }
+
+    private String getAdvanceDescription() {
+        return ADVANTAGE_FOR + getLeadPlayer();
+    }
+
+    private String getLeadPlayer() {
+        if (scorePlayerOne > scorePlayerTwo) {
+            return PLAYER_1;
+        }
+        return PLAYER_2;
+    }
+
+    private boolean atLeastThreePointsHaveBeenScoredByEachSide() {
+        return scorePlayerOne >= 3 && scorePlayerTwo >= 3;
+    }
+
+    private String getTiedScoreDescription() {
+        if (isDeuce()) {
+            return DEUCE;
+        }
+        return getScoreDescription(scorePlayerOne) + SEPARATOR + ALL;
+    }
+
+    private boolean isDeuce() {
+        return arePlayersTied() && atLeastThreePointsHaveBeenScoredByEachSide();
+    }
+
+    private boolean arePlayersTied() {
+        return scorePlayerOne == scorePlayerTwo;
+    }
+
+    private String getScoreDescription(int tempScore) {
+        return switch (tempScore) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            case 3 -> "Forty";
+            default -> String.valueOf(tempScore);
+        };
     }
 }
