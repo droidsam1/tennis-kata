@@ -1,7 +1,7 @@
 public class TennisGame2 implements TennisGame {
 
     public final Player player1;
-    private final String player2Name;
+    public final Player player2;
 
     public int player2Points = 0;
 
@@ -9,7 +9,7 @@ public class TennisGame2 implements TennisGame {
 
     public TennisGame2(String player1Name, String player2Name) {
         player1 = new Player(player1Name);
-        this.player2Name = player2Name;
+        player2 = new Player(player2Name);
     }
 
     public String getScore() {
