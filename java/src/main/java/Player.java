@@ -1,7 +1,7 @@
 public class Player {
-    final String name;
-    public int points = 0;
-    public String score = "";
+    private final String name;
+    private int points = 0;
+    private String score = "";
 
     public Player(String name) {
         this.name = name;
@@ -9,5 +9,21 @@ public class Player {
 
     public void incrementPoints() {
         points++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 }
