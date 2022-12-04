@@ -10,9 +10,7 @@ public class TennisGame2 implements TennisGame {
 
     public String getScore() {
         if (isATie()) {
-            if (isATie() && player1.getPoints() >= 3)
-                return "Deuce";
-            return player1.getScore() + "-All";
+            return getTieScoreDescription();
         }
 
         if (!aPlayerWins() && player1.getPoints() > player2.getPoints() && player2.getPoints() >= 3) {
@@ -32,6 +30,17 @@ public class TennisGame2 implements TennisGame {
             }
         }
         return player1.getScore() + "-" + player2.getScore();
+    }
+
+    private String getTieScoreDescription() {
+        if (isDeuce()) {
+            return "Deuce";
+        }
+        return player1.getScore() + "-All";
+    }
+
+    private boolean isDeuce() {
+        return isATie() && player1.getPoints() >= 3;
     }
 
     private boolean isATie() {
