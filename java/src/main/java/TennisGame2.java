@@ -13,11 +13,7 @@ public class TennisGame2 implements TennisGame {
             return getTieScoreDescription();
         }
 
-        if (!aPlayerWins() && player1.getPoints() > player2.getPoints() && getPlayerWithLowerScore().getPoints() >= 3) {
-            return "Advantage " + getPlayerWithHigherScore().getName();
-        }
-
-        if (!aPlayerWins() && player2.getPoints() > player1.getPoints() && getPlayerWithLowerScore().getPoints() >= 3) {
+        if (!aPlayerWins() && !isATie() && getPlayerWithLowerScore().getPoints() >= 3) {
             return "Advantage " + getPlayerWithHigherScore().getName();
         }
 
