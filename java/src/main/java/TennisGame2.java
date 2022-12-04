@@ -3,8 +3,6 @@ public class TennisGame2 implements TennisGame {
     public final Player player1;
     public final Player player2;
 
-    public String player2Score = "";
-
     public TennisGame2(String player1Name, String player2Name) {
         player1 = new Player(player1Name);
         player2 = new Player(player2Name);
@@ -32,19 +30,19 @@ public class TennisGame2 implements TennisGame {
             if (player1.points == 3)
                 player1.score = "Forty";
 
-            player2Score = "Love";
-            score = player1.score + "-" + player2Score;
+            player2.score = "Love";
+            score = player1.score + "-" + player2.score;
         }
         if (player2.points > 0 && player1.points == 0) {
             if (player2.points == 1)
-                player2Score = "Fifteen";
+                player2.score = "Fifteen";
             if (player2.points == 2)
-                player2Score = "Thirty";
+                player2.score = "Thirty";
             if (player2.points == 3)
-                player2Score = "Forty";
+                player2.score = "Forty";
 
             player1.score = "Love";
-            score = player1.score + "-" + player2Score;
+            score = player1.score + "-" + player2.score;
         }
 
         if (player1.points > player2.points && player1.points < 4) {
@@ -53,21 +51,21 @@ public class TennisGame2 implements TennisGame {
             if (player1.points == 3)
                 player1.score = "Forty";
             if (player2.points == 1)
-                player2Score = "Fifteen";
+                player2.score = "Fifteen";
             if (player2.points == 2)
-                player2Score = "Thirty";
-            score = player1.score + "-" + player2Score;
+                player2.score = "Thirty";
+            score = player1.score + "-" + player2.score;
         }
         if (player2.points > player1.points && player2.points < 4) {
             if (player2.points == 2)
-                player2Score = "Thirty";
+                player2.score = "Thirty";
             if (player2.points == 3)
-                player2Score = "Forty";
+                player2.score = "Forty";
             if (player1.points == 1)
                 player1.score = "Fifteen";
             if (player1.points == 2)
                 player1.score = "Thirty";
-            score = player1.score + "-" + player2Score;
+            score = player1.score + "-" + player2.score;
         }
 
         if (player1.points > player2.points && player2.points >= 3) {
