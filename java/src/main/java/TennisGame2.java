@@ -45,10 +45,10 @@ public class TennisGame2 implements TennisGame {
         }
 
         if (player1.getPoints() >= 4 && player2.getPoints() >= 0 && (player1.getPoints() - player2.getPoints()) >= 2) {
-            score = "Win for player1";
+            return "Win for player1";
         }
         if (player2.getPoints() >= 4 && player1.getPoints() >= 0 && (player2.getPoints() - player1.getPoints()) >= 2) {
-            score = "Win for player2";
+            return "Win for player2";
         }
         return score;
     }
