@@ -9,7 +9,6 @@ public class TennisGame2 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
         if (isATie()) {
             if (isATie() && player1.getPoints() >= 3)
                 return "Deuce";
