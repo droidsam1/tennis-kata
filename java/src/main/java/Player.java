@@ -20,15 +20,13 @@ public class Player {
     }
 
     public String getScore() {
-        if (getPoints() == 0)
-            return "Love";
-        if (getPoints() == 1)
-            return "Fifteen";
-        if (getPoints() == 2)
-            return "Thirty";
-        if (getPoints() == 3)
-            return "Forty";
-        return String.valueOf(points);
+        return switch (points) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            case 3 -> "Forty";
+            default -> String.valueOf(points);
+        };
     }
 
     public void setScore(String score) {
