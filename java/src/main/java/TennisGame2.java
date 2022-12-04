@@ -36,12 +36,12 @@ public class TennisGame2 implements TennisGame {
             score = player1.getScore() + "-" + player2.getScore();
         }
 
-        if (player1.getPoints() > player2.getPoints() && player2.getPoints() >= 3) {
-            score = "Advantage player1";
+        if (!aPlayerWins() && player1.getPoints() > player2.getPoints() && player2.getPoints() >= 3) {
+            return "Advantage player1";
         }
 
-        if (player2.getPoints() > player1.getPoints() && player1.getPoints() >= 3) {
-            score = "Advantage player2";
+        if (!aPlayerWins() && player2.getPoints() > player1.getPoints() && player1.getPoints() >= 3) {
+            return "Advantage player2";
         }
 
         if (aPlayerWins()) {
