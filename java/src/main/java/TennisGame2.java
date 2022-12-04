@@ -23,48 +23,16 @@ public class TennisGame2 implements TennisGame {
             score = "Deuce";
 
         if (player1.getPoints() > 0 && player2.getPoints() == 0) {
-            if (player1.getPoints() == 1)
-                player1.setScore("Fifteen");
-            if (player1.getPoints() == 2)
-                player1.setScore("Thirty");
-            if (player1.getPoints() == 3)
-                player1.setScore("Forty");
-
-            player2.setScore("Love");
             score = player1.getScore() + "-" + player2.getScore();
         }
         if (player2.getPoints() > 0 && player1.getPoints() == 0) {
-            if (player2.getPoints() == 1)
-                player2.setScore("Fifteen");
-            if (player2.getPoints() == 2)
-                player2.setScore("Thirty");
-            if (player2.getPoints() == 3)
-                player2.setScore("Forty");
-
-            player1.setScore("Love");
             score = player1.getScore() + "-" + player2.getScore();
         }
 
         if (player1.getPoints() > player2.getPoints() && player1.getPoints() < 4) {
-            if (player1.getPoints() == 2)
-                player1.setScore("Thirty");
-            if (player1.getPoints() == 3)
-                player1.setScore("Forty");
-            if (player2.getPoints() == 1)
-                player2.setScore("Fifteen");
-            if (player2.getPoints() == 2)
-                player2.setScore("Thirty");
             score = player1.getScore() + "-" + player2.getScore();
         }
         if (player2.getPoints() > player1.getPoints() && player2.getPoints() < 4) {
-            if (player2.getPoints() == 2)
-                player2.setScore("Thirty");
-            if (player2.getPoints() == 3)
-                player2.setScore("Forty");
-            if (player1.getPoints() == 1)
-                player1.setScore("Fifteen");
-            if (player1.getPoints() == 2)
-                player1.setScore("Thirty");
             score = player1.getScore() + "-" + player2.getScore();
         }
 
