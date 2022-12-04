@@ -18,10 +18,14 @@ public class TennisGame2 implements TennisGame {
         }
 
         if (aPlayerWins()) {
-            return "Win for " + getPlayerWithHigherScore().getName();
+            return getWinningScoreDescription();
         }
 
         return player1.getScore() + "-" + player2.getScore();
+    }
+
+    private String getWinningScoreDescription() {
+        return "Win for " + getPlayerWithHigherScore().getName();
     }
 
     private String getAdvantageScoreDescription() {
