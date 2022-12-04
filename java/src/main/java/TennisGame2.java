@@ -91,7 +91,7 @@ public class TennisGame2 implements TennisGame {
     public void SetP1Score(int number) {
 
         for (int i = 0; i < number; i++) {
-            P1Score();
+            incrementPlayer1Points();
         }
 
     }
@@ -99,23 +99,23 @@ public class TennisGame2 implements TennisGame {
     public void SetP2Score(int number) {
 
         for (int i = 0; i < number; i++) {
-            P2Score();
+            incrementPlayer2Points();
         }
 
     }
 
-    public void P1Score() {
+    public void incrementPlayer1Points() {
         player1Points++;
     }
 
-    public void P2Score() {
+    public void incrementPlayer2Points() {
         player2Points++;
     }
 
     public void wonPoint(String player) {
         if (player.equals(player1Name))
-            P1Score();
+            incrementPlayer1Points();
         else
-            P2Score();
+            incrementPlayer2Points();
     }
 }
