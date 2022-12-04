@@ -10,19 +10,19 @@ public class TennisGame2 implements TennisGame {
 
     public String getScore() {
         String score = "";
-        if (player1.getPoints() == player2.getPoints()) {
-            if (player1.getPoints() == player2.getPoints() && player1.getPoints() < 4) {
+        if (isATie()) {
+            if (isATie() && player1.getPoints() < 3) {
                 if (player1.getPoints() == 0)
                     score = "Love";
                 if (player1.getPoints() == 1)
                     score = "Fifteen";
                 if (player1.getPoints() == 2)
                     score = "Thirty";
-                score += "-All";
+                return score + "-All";
             }
-            if (player1.getPoints() == player2.getPoints() && player1.getPoints() >= 3)
-                score = "Deuce";
-            return score;
+            if (isATie() && player1.getPoints() >= 3)
+                return "Deuce";
+
         }
 
 
@@ -57,6 +57,10 @@ public class TennisGame2 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private boolean isATie() {
+        return player1.getPoints() == player2.getPoints();
     }
 
     private boolean aPlayerWins() {
