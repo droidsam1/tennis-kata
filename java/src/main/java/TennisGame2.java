@@ -11,14 +11,10 @@ public class TennisGame2 implements TennisGame {
     public String getScore() {
         String score = "";
         if (isATie()) {
-            if (isATie() && player1.getPoints() < 3) {
-                return player1.getScore() + "-All";
-            }
             if (isATie() && player1.getPoints() >= 3)
                 return "Deuce";
-
+            return player1.getScore() + "-All";
         }
-
 
         if (player1.getPoints() > 0 && player2.getPoints() == 0) {
             score = player1.getScore() + "-" + player2.getScore();
