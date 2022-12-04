@@ -44,13 +44,19 @@ public class TennisGame2 implements TennisGame {
             score = "Advantage player2";
         }
 
-        if (player1.getPoints() >= 4 && player2.getPoints() >= 0 && (player1.getPoints() - player2.getPoints()) >= 2) {
-            return "Win for player1";
-        }
-        if (player2.getPoints() >= 4 && player1.getPoints() >= 0 && (player2.getPoints() - player1.getPoints()) >= 2) {
-            return "Win for player2";
+        if (aPlayerWins()) {
+            if (player1.getPoints() >= 4 && player2.getPoints() >= 0 && (player1.getPoints() - player2.getPoints()) >= 2) {
+                return "Win for player1";
+            }
+            if (player2.getPoints() >= 4 && player1.getPoints() >= 0 && (player2.getPoints() - player1.getPoints()) >= 2) {
+                return "Win for player2";
+            }
         }
         return score;
+    }
+
+    private boolean aPlayerWins() {
+        return (player1.getPoints() >= 4 || player2.getPoints() >= 4) && Math.abs(player2.getPoints() - player1.getPoints()) >= 2;
     }
 
     public void wonPoint(String player) {
