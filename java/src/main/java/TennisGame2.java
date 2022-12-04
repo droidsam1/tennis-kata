@@ -28,14 +28,14 @@ public class TennisGame2 implements TennisGame {
 
         if (player1.points > 0 && player2Points == 0) {
             if (player1.points == 1)
-                player1.player1Score = "Fifteen";
+                player1.score = "Fifteen";
             if (player1.points == 2)
-                player1.player1Score = "Thirty";
+                player1.score = "Thirty";
             if (player1.points == 3)
-                player1.player1Score = "Forty";
+                player1.score = "Forty";
 
             player2Score = "Love";
-            score = player1.player1Score + "-" + player2Score;
+            score = player1.score + "-" + player2Score;
         }
         if (player2Points > 0 && player1.points == 0) {
             if (player2Points == 1)
@@ -45,20 +45,20 @@ public class TennisGame2 implements TennisGame {
             if (player2Points == 3)
                 player2Score = "Forty";
 
-            player1.player1Score = "Love";
-            score = player1.player1Score + "-" + player2Score;
+            player1.score = "Love";
+            score = player1.score + "-" + player2Score;
         }
 
         if (player1.points > player2Points && player1.points < 4) {
             if (player1.points == 2)
-                player1.player1Score = "Thirty";
+                player1.score = "Thirty";
             if (player1.points == 3)
-                player1.player1Score = "Forty";
+                player1.score = "Forty";
             if (player2Points == 1)
                 player2Score = "Fifteen";
             if (player2Points == 2)
                 player2Score = "Thirty";
-            score = player1.player1Score + "-" + player2Score;
+            score = player1.score + "-" + player2Score;
         }
         if (player2Points > player1.points && player2Points < 4) {
             if (player2Points == 2)
@@ -66,10 +66,10 @@ public class TennisGame2 implements TennisGame {
             if (player2Points == 3)
                 player2Score = "Forty";
             if (player1.points == 1)
-                player1.player1Score = "Fifteen";
+                player1.score = "Fifteen";
             if (player1.points == 2)
-                player1.player1Score = "Thirty";
-            score = player1.player1Score + "-" + player2Score;
+                player1.score = "Thirty";
+            score = player1.score + "-" + player2Score;
         }
 
         if (player1.points > player2Points && player2Points >= 3) {
@@ -87,23 +87,6 @@ public class TennisGame2 implements TennisGame {
             score = "Win for player2";
         }
         return score;
-    }
-
-    public void SetP1Score(int number) {
-
-        player1.SetP1Score(number);
-    }
-
-    public void SetP2Score(int number) {
-
-        for (int i = 0; i < number; i++) {
-            incrementPlayer2Points();
-        }
-
-    }
-
-    public void incrementPlayer1Points() {
-        player1.incrementPlayer1Points();
     }
 
     public void incrementPlayer2Points() {
