@@ -14,7 +14,7 @@ public class TennisGame2 implements TennisGame {
         }
 
         if (!aPlayerWins() && !isATie() && getPlayerWithLowerScore().getPoints() >= 3) {
-            return "Advantage " + getPlayerWithHigherScore().getName();
+            return getAdvantageScoreDescription();
         }
 
         if (aPlayerWins()) {
@@ -26,6 +26,10 @@ public class TennisGame2 implements TennisGame {
             }
         }
         return player1.getScore() + "-" + player2.getScore();
+    }
+
+    private String getAdvantageScoreDescription() {
+        return "Advantage " + getPlayerWithHigherScore().getName();
     }
 
     private Player getPlayerWithHigherScore() {
