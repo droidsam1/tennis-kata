@@ -18,10 +18,9 @@ public class TennisGame2 implements TennisGame {
         }
 
         if (aPlayerWins()) {
-            if (getPlayerWithHigherScore().getPoints() >= 4 && getPlayerWithHigherScore().getPoints() >= 0 && (getPlayerWithHigherScore().getPoints() - getPlayerWithLowerScore().getPoints()) >= 2) {
-                return "Win for " + getPlayerWithHigherScore().getName();
-            }
+            return "Win for " + getPlayerWithHigherScore().getName();
         }
+
         return player1.getScore() + "-" + player2.getScore();
     }
 
