@@ -12,13 +12,7 @@ public class TennisGame2 implements TennisGame {
         String score = "";
         if (isATie()) {
             if (isATie() && player1.getPoints() < 3) {
-                if (player1.getPoints() == 0)
-                    score = "Love";
-                if (player1.getPoints() == 1)
-                    score = "Fifteen";
-                if (player1.getPoints() == 2)
-                    score = "Thirty";
-                return score + "-All";
+                return player1.getScore() + "-All";
             }
             if (isATie() && player1.getPoints() >= 3)
                 return "Deuce";
