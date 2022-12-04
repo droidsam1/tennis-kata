@@ -16,20 +16,6 @@ public class TennisGame2 implements TennisGame {
             return player1.getScore() + "-All";
         }
 
-        if (player1.getPoints() > 0 && player2.getPoints() == 0) {
-            score = player1.getScore() + "-" + player2.getScore();
-        }
-        if (player2.getPoints() > 0 && player1.getPoints() == 0) {
-            score = player1.getScore() + "-" + player2.getScore();
-        }
-
-        if (player1.getPoints() > player2.getPoints() && player1.getPoints() < 4) {
-            score = player1.getScore() + "-" + player2.getScore();
-        }
-        if (player2.getPoints() > player1.getPoints() && player2.getPoints() < 4) {
-            score = player1.getScore() + "-" + player2.getScore();
-        }
-
         if (!aPlayerWins() && player1.getPoints() > player2.getPoints() && player2.getPoints() >= 3) {
             return "Advantage player1";
         }
@@ -46,7 +32,7 @@ public class TennisGame2 implements TennisGame {
                 return "Win for player2";
             }
         }
-        return score;
+        return player1.getScore() + "-" + player2.getScore();
     }
 
     private boolean isATie() {
