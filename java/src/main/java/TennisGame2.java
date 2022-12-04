@@ -13,11 +13,11 @@ public class TennisGame2 implements TennisGame {
             return getTieScoreDescription();
         }
 
-        if (!aPlayerWins() && player1.getPoints() > player2.getPoints() && player2.getPoints() >= 3) {
+        if (!aPlayerWins() && player1.getPoints() > player2.getPoints() && getPlayerWithLowerScore().getPoints() >= 3) {
             return "Advantage " + getPlayerWithHigherScore().getName();
         }
 
-        if (!aPlayerWins() && player2.getPoints() > player1.getPoints() && player1.getPoints() >= 3) {
+        if (!aPlayerWins() && player2.getPoints() > player1.getPoints() && getPlayerWithLowerScore().getPoints() >= 3) {
             return "Advantage " + getPlayerWithHigherScore().getName();
         }
 
@@ -37,6 +37,13 @@ public class TennisGame2 implements TennisGame {
             return player1;
         }
         return player2;
+    }
+
+    private Player getPlayerWithLowerScore() {
+        if (getPlayerWithHigherScore().equals(player1)) {
+            return player2;
+        }
+        return player1;
     }
 
     private String getTieScoreDescription() {
