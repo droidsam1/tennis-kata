@@ -7,7 +7,7 @@ public class Player {
         this.name = name;
     }
 
-    public void incrementPlayer1Points() {
+    public void incrementPoints() {
         points++;
     }
 }
