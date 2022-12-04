@@ -10,17 +10,21 @@ public class TennisGame2 implements TennisGame {
 
     public String getScore() {
         String score = "";
-        if (player1.getPoints() == player2.getPoints() && player1.getPoints() < 4) {
-            if (player1.getPoints() == 0)
-                score = "Love";
-            if (player1.getPoints() == 1)
-                score = "Fifteen";
-            if (player1.getPoints() == 2)
-                score = "Thirty";
-            score += "-All";
+        if (player1.getPoints() == player2.getPoints()) {
+            if (player1.getPoints() == player2.getPoints() && player1.getPoints() < 4) {
+                if (player1.getPoints() == 0)
+                    score = "Love";
+                if (player1.getPoints() == 1)
+                    score = "Fifteen";
+                if (player1.getPoints() == 2)
+                    score = "Thirty";
+                score += "-All";
+            }
+            if (player1.getPoints() == player2.getPoints() && player1.getPoints() >= 3)
+                score = "Deuce";
+            return score;
         }
-        if (player1.getPoints() == player2.getPoints() && player1.getPoints() >= 3)
-            score = "Deuce";
+
 
         if (player1.getPoints() > 0 && player2.getPoints() == 0) {
             score = player1.getScore() + "-" + player2.getScore();
