@@ -1,10 +1,10 @@
 public class Player {
-    final String player1Name;
+    final String name;
     public int player1Points = 0;
     public String player1Score = "";
 
-    public Player(String player1Name) {
-        this.player1Name = player1Name;
+    public Player(String name) {
+        this.name = name;
     }
 
     public void SetP1Score(int number) {
