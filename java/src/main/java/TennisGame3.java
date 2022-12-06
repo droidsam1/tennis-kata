@@ -19,7 +19,7 @@ public class TennisGame3 implements TennisGame {
             return "Deuce";
         }
         if (player1Points >= 4 || player2Points >= 4) {
-            if ((player1Points - player2Points) * (player1Points - player2Points) == 1)
+            if (getPointsDifference() == 1)
                 return "Advantage " + getLeadingPlayer();
         }
         if (player1Points >= 4 || player2Points >= 4) {
@@ -29,6 +29,10 @@ public class TennisGame3 implements TennisGame {
             return getPointsDescription(player1Points) + "-All";
         }
         return getPointsDescription(player1Points) + "-" + getPointsDescription(player2Points);
+    }
+
+    private int getPointsDifference() {
+        return (player1Points - player2Points) * (player1Points - player2Points);
     }
 
     private String getLeadingPlayer() {
