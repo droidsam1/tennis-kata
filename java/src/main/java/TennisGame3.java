@@ -21,7 +21,7 @@ public class TennisGame3 implements TennisGame {
         if ((player1Points >= 4 || player2Points >= 4) && getPointsDifference() == 1) {
             return "Advantage " + getLeadingPlayer();
         }
-        if (player1Points >= 4 || player2Points >= 4) {
+        if ((player1Points >= 4 || player2Points >= 4) && getPointsDifference() >= 2) {
             return "Win for " + getLeadingPlayer();
         }
         if (isATie()) {
