@@ -18,16 +18,24 @@ public class TennisGame3 implements TennisGame {
         if (isDeuce()) {
             return "Deuce";
         }
-        if ((player1Points >= 4 || player2Points >= 4) && getPointsDifference() == 1) {
+        if (hasOnePlayerAdvantage()) {
             return "Advantage " + getLeadingPlayer();
         }
-        if ((player1Points >= 4 || player2Points >= 4) && getPointsDifference() >= 2) {
+        if (thereIsAWinner()) {
             return "Win for " + getLeadingPlayer();
         }
         if (isATie()) {
             return getPointsDescription(player1Points) + "-All";
         }
         return getPointsDescription(player1Points) + "-" + getPointsDescription(player2Points);
+    }
+
+    private boolean hasOnePlayerAdvantage() {
+        return (player1Points >= 4 || player2Points >= 4) && getPointsDifference() == 1;
+    }
+
+    private boolean thereIsAWinner() {
+        return (player1Points >= 4 || player2Points >= 4) && getPointsDifference() >= 2;
     }
 
     private int getPointsDifference() {
