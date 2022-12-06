@@ -22,6 +22,11 @@ public class TennisGame3 implements TennisGame {
             String playerName = player1Points > player2Points ? player1Name : player2Name;
             if ((player1Points - player2Points) * (player1Points - player2Points) == 1)
                 return "Advantage " + playerName;
+        }
+        if (player1Points >= 4 || player2Points >= 4) {
+            String playerName = player1Points > player2Points ? player1Name : player2Name;
+            if ((player1Points - player2Points) * (player1Points - player2Points) == 1)
+                return "Advantage " + playerName;
             return "Win for " + playerName;
         }
         if (isATie()) {
