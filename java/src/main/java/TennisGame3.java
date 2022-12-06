@@ -47,7 +47,7 @@ public class TennisGame3 implements TennisGame {
     }
 
     private boolean isDeuce() {
-        return isATie() && (player1Points >= 4 || player1Points + player2Points == 6);
+        return isATie() && player1Points >= 3;
     }
 
     private boolean isATie() {
