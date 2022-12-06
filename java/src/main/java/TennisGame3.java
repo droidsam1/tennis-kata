@@ -31,11 +31,15 @@ public class TennisGame3 implements TennisGame {
     }
 
     private boolean hasOnePlayerAdvantage() {
-        return (player1Points >= 4 || player2Points >= 4) && getPointsDifference() == 1;
+        return atLeastThreePointsHaveBeenScored() && getPointsDifference() == 1;
+    }
+
+    private boolean atLeastThreePointsHaveBeenScored() {
+        return player1Points > 3 || player2Points > 3;
     }
 
     private boolean thereIsAWinner() {
-        return (player1Points >= 4 || player2Points >= 4) && getPointsDifference() >= 2;
+        return atLeastThreePointsHaveBeenScored() && getPointsDifference() >= 2;
     }
 
     private int getPointsDifference() {
