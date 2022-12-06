@@ -24,7 +24,11 @@ public class TennisGame3 implements TennisGame {
         if (thereIsAWinner()) {
             return "Win for " + getLeadingPlayer();
         }
-        if (isATie()) {
+        return getScoreDescription();
+    }
+
+    private String getScoreDescription() {
+        if (hasPlayersTheSameScore()) {
             return getPointsDescription(player1Points) + "-All";
         }
         return getPointsDescription(player1Points) + "-" + getPointsDescription(player2Points);
@@ -59,10 +63,10 @@ public class TennisGame3 implements TennisGame {
     }
 
     private boolean isDeuce() {
-        return isATie() && atLeastThreePointsHaveBeenScored();
+        return hasPlayersTheSameScore() && atLeastThreePointsHaveBeenScored();
     }
 
-    private boolean isATie() {
+    private boolean hasPlayersTheSameScore() {
         return player1Points == player2Points;
     }
 
