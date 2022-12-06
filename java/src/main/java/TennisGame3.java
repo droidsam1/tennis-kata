@@ -15,9 +15,8 @@ public class TennisGame3 implements TennisGame {
     }
 
     public String getScore() {
-        if (player1Points >= 4 || player2Points >= 4 || player1Points + player2Points == 6) {
-            if (isATie())
-                return "Deuce";
+        if ((player1Points >= 4 || player2Points >= 4 || player1Points + player2Points == 6) && isATie()) {
+            return "Deuce";
         }
         if (player1Points >= 4 || player2Points >= 4) {
             String s = player1Points > player2Points ? player1Name : player2Name;
