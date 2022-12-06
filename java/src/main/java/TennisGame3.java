@@ -18,9 +18,8 @@ public class TennisGame3 implements TennisGame {
         if (isDeuce()) {
             return "Deuce";
         }
-        if (player1Points >= 4 || player2Points >= 4) {
-            if (getPointsDifference() == 1)
-                return "Advantage " + getLeadingPlayer();
+        if ((player1Points >= 4 || player2Points >= 4) && getPointsDifference() == 1) {
+            return "Advantage " + getLeadingPlayer();
         }
         if (player1Points >= 4 || player2Points >= 4) {
             return "Win for " + getLeadingPlayer();
