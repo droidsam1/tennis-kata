@@ -31,15 +31,23 @@ public class TennisGame3 implements TennisGame {
     }
 
     private boolean hasOnePlayerAdvantage() {
-        return atLeastThreePointsHaveBeenScored() && getPointsDifference() == 1;
+        return atLeastThreePointsHaveBeenScoredByEachSide() && getPointsDifference() == 1;
+    }
+
+    private boolean atLeastThreePointsHaveBeenScoredByEachSide() {
+        return player1Points >= 3 && player2Points >= 3;
     }
 
     private boolean atLeastThreePointsHaveBeenScored() {
-        return player1Points > 3 || player2Points > 3;
+        return player1Points >= 3 || player2Points >= 3;
+    }
+
+    private boolean atLeastFourPointsHaveBeenScored() {
+        return player1Points >= 4 || player2Points >= 4;
     }
 
     private boolean thereIsAWinner() {
-        return atLeastThreePointsHaveBeenScored() && getPointsDifference() >= 2;
+        return atLeastFourPointsHaveBeenScored() && getPointsDifference() >= 2;
     }
 
     private int getPointsDifference() {
@@ -51,7 +59,7 @@ public class TennisGame3 implements TennisGame {
     }
 
     private boolean isDeuce() {
-        return isATie() && player1Points >= 3;
+        return isATie() && atLeastThreePointsHaveBeenScored();
     }
 
     private boolean isATie() {
