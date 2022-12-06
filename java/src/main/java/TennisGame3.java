@@ -19,20 +19,22 @@ public class TennisGame3 implements TennisGame {
             return "Deuce";
         }
         if (player1Points >= 4 || player2Points >= 4) {
-            String playerName = player1Points > player2Points ? player1Name : player2Name;
+            String playerName = getLeadingPlayer();
             if ((player1Points - player2Points) * (player1Points - player2Points) == 1)
                 return "Advantage " + playerName;
         }
         if (player1Points >= 4 || player2Points >= 4) {
-            String playerName = player1Points > player2Points ? player1Name : player2Name;
-            if ((player1Points - player2Points) * (player1Points - player2Points) == 1)
-                return "Advantage " + playerName;
+            String playerName = getLeadingPlayer();
             return "Win for " + playerName;
         }
         if (isATie()) {
             return getPointsDescription(player1Points) + "-All";
         }
         return getPointsDescription(player1Points) + "-" + getPointsDescription(player2Points);
+    }
+
+    private String getLeadingPlayer() {
+        return player1Points > player2Points ? player1Name : player2Name;
     }
 
     private boolean isDeuce() {
