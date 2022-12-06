@@ -24,8 +24,7 @@ public class TennisGame3 implements TennisGame {
     }
 
     private static String[] getPointsDescription() {
-        String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
-        return p;
+        return new String[]{"Love", "Fifteen", "Thirty", "Forty"};
     }
 
     private boolean isATie() {
