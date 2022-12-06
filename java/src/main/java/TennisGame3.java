@@ -21,12 +21,11 @@ public class TennisGame3 implements TennisGame {
         if (player1Points >= 4 || player2Points >= 4) {
             String s = player1Points > player2Points ? player1Name : player2Name;
             return ((player1Points - player2Points) * (player1Points - player2Points) == 1) ? "Advantage " + s : "Win for " + s;
-        } else {
-            if (isATie()) {
-                return getPointsDescription(player1Points) + "-All";
-            }
-            return getPointsDescription(player1Points) + "-" + getPointsDescription(player2Points);
         }
+        if (isATie()) {
+            return getPointsDescription(player1Points) + "-All";
+        }
+        return getPointsDescription(player1Points) + "-" + getPointsDescription(player2Points);
     }
 
     private boolean isDeuce() {
